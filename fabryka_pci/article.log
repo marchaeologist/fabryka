@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.18)  13 APR 2025 13:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.18)  13 APR 2025 20:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -493,23 +493,28 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
+<figure/hex_Fabryka4.png, id=4, 124.90665pt x 144.54pt>
+File: figure/hex_Fabryka4.png Graphic file (type png)
+<use figure/hex_Fabryka4.png>
+Package pdftex.def Info: figure/hex_Fabryka4.png  used on input line 125.
+(pdftex.def)             Requested size: 113.81006pt x 131.6992pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 123.
+(Font)              <10> on input line 129.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 123.
+(Font)              <7> on input line 129.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 123.
+(Font)              <5> on input line 129.
 
 
 [1
 
-{c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
-<figure/presentation_applications.png, id=21, 618.6312pt x 356.532pt>
+{c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc} <./figure/hex_Fabryka4.png>]
+<figure/presentation_applications.png, id=50, 618.6312pt x 356.532pt>
 File: figure/presentation_applications.png Graphic file (type png)
 <use figure/presentation_applications.png>
-Package pdftex.def Info: figure/presentation_applications.png  used on input line 215.
+Package pdftex.def Info: figure/presentation_applications.png  used on input line 227.
 (pdftex.def)             Requested size: 455.24068pt x 262.3661pt.
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 225.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 237.
 (c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -517,67 +522,62 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 [2 <./figure/presentation_applications.png>]
 
 [3{c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
-
-LaTeX Warning: Reference `fig:rayleigh' on page 4 undefined on input line 314.
-
-<article_files/figure-latex/rayleigh-1.pdf, id=43, 469.755pt x 252.945pt>
+<article_files/figure-latex/rayleigh-1.pdf, id=93, 469.755pt x 252.945pt>
 File: article_files/figure-latex/rayleigh-1.pdf Graphic file (type pdf)
 <use article_files/figure-latex/rayleigh-1.pdf>
-Package pdftex.def Info: article_files/figure-latex/rayleigh-1.pdf  used on input line 335.
+Package pdftex.def Info: article_files/figure-latex/rayleigh-1.pdf  used on input line 353.
 (pdftex.def)             Requested size: 469.75386pt x 252.94438pt.
 
 
 [4{c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc} <./article_files/figure-latex/rayleigh-1.pdf>]
 
 [5]
-<figure/upload_your_data.jpg, id=73, 892.08281pt x 843.90282pt>
+<figure/upload_your_data.jpg, id=130, 892.08281pt x 843.90282pt>
 File: figure/upload_your_data.jpg Graphic file (type jpg)
 <use figure/upload_your_data.jpg>
-Package pdftex.def Info: figure/upload_your_data.jpg  used on input line 436.
-(pdftex.def)             Requested size: 483.70491pt x 457.58076pt.
-
-Overfull \hbox (13.94989pt too wide) in paragraph at lines 436--437
- [][] 
- []
-
+Package pdftex.def Info: figure/upload_your_data.jpg  used on input line 463.
+(pdftex.def)             Requested size: 455.24207pt x 430.65515pt.
 
 
 [6 <./figure/upload_your_data.jpg>]
-<figure/classical_method.jpg, id=88, 561.297pt x 338.7054pt>
+<figure/classical_method.jpg, id=151, 561.297pt x 338.7054pt>
 File: figure/classical_method.jpg Graphic file (type jpg)
 <use figure/classical_method.jpg>
-Package pdftex.def Info: figure/classical_method.jpg  used on input line 542.
+Package pdftex.def Info: figure/classical_method.jpg  used on input line 564.
 (pdftex.def)             Requested size: 483.70807pt x 291.88565pt.
 
-Overfull \hbox (13.95305pt too wide) in paragraph at lines 542--543
+Overfull \hbox (13.95305pt too wide) in paragraph at lines 564--565
  [][] 
  []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
 [7]
 
 [8 <./figure/classical_method.jpg>]
-<figure/spatialised_method.jpg, id=112, 567.8013pt x 343.2825pt>
+<figure/spatialised_method.jpg, id=179, 567.8013pt x 343.2825pt>
 File: figure/spatialised_method.jpg Graphic file (type jpg)
 <use figure/spatialised_method.jpg>
-Package pdftex.def Info: figure/spatialised_method.jpg  used on input line 630.
+Package pdftex.def Info: figure/spatialised_method.jpg  used on input line 652.
 (pdftex.def)             Requested size: 483.70772pt x 292.44101pt.
 
-Overfull \hbox (13.9527pt too wide) in paragraph at lines 630--631
+Overfull \hbox (13.9527pt too wide) in paragraph at lines 652--653
  [][] 
  []
 
 
 
 [9 <./figure/spatialised_method.jpg>]
-<figure/spatial_exploration.jpg, id=122, 549.9747pt x 330.033pt>
+<figure/spatial_exploration.jpg, id=189, 549.9747pt x 330.033pt>
 File: figure/spatial_exploration.jpg Graphic file (type jpg)
 <use figure/spatial_exploration.jpg>
-Package pdftex.def Info: figure/spatial_exploration.jpg  used on input line 657.
+Package pdftex.def Info: figure/spatial_exploration.jpg  used on input line 679.
 (pdftex.def)             Requested size: 483.69391pt x 290.2587pt.
 
-Overfull \hbox (13.93889pt too wide) in paragraph at lines 657--658
+Overfull \hbox (13.93889pt too wide) in paragraph at lines 679--680
  [][] 
  []
 
@@ -587,28 +587,27 @@ Overfull \hbox (13.93889pt too wide) in paragraph at lines 657--658
 
 [11]
 
-[12] (./article.aux)
+[12]
+
+[13] (./article.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 13868 strings out of 475110
- 223168 string characters out of 5761362
- 660052 words of memory out of 5000000
- 36452 multiletter control sequences out of 15000+600000
- 623031 words of font info for 162 fonts, out of 8000000 for 9000
+ 13882 strings out of 475110
+ 223452 string characters out of 5761362
+ 659249 words of memory out of 5000000
+ 36461 multiletter control sequences out of 15000+600000
+ 623291 words of font info for 164 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 83i,12n,93p,1004b,532s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,12n,93p,1004b,570s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr5.pfb><c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy5.pfb><c:/Users/Surface User/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on article.pdf (12 pages, 3010985 bytes).
+Output written on article.pdf (13 pages, 3062678 bytes).
 PDF statistics:
- 306 PDF objects out of 1000 (max. 8388607)
- 252 compressed objects within 3 object streams
- 61 named destinations out of 1000 (max. 500000)
- 34991 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 357 PDF objects out of 1000 (max. 8388607)
+ 300 compressed objects within 3 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 34996 words of extra memory for PDF output out of 35830 (max. 10000000)
 
