@@ -1,0 +1,12 @@
+name: fabryka
+title: fabryka
+username: marchaeologist
+account: marchaeologist
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10888752
+bundleId: 8123536
+url: https://marchaeologist.shinyapps.io/fabryka/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
