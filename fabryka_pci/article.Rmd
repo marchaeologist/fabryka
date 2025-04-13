@@ -1,0 +1,607 @@
+---
+title: '**Fabryka**'
+subtitle: A web application for easily analysing & exploring the fabric of archaeological assemblages
+output:
+  pdf_document: default
+header-includes:
+- \usepackage{fancyhdr}
+- \pagestyle{fancy}
+- \fancyhead[L]{Fabryka}
+- \fancyhead[R]{R web application for fabric analysis}
+- \fancyfoot[C]{\thepage}
+- \usepackage{float}
+- \floatplacement{figure}{H}
+editor_options:
+  markdown:
+    wrap: 72
+  chunk_output_type: console
+bibliography: references.bib
+link-citations: true
+---
+
+```{=html}
+<style>
+body {
+text-align: justify}
+</style>
+```
+
+Marc THOMAS ^1\*^ \bigbreak \bigbreak
+
+^1^ TRACES, UMR 5608 - Université Toulouse Jean Jaurès, 5 Allée Antonio
+Machado, FR-31058 Toulouse Cedex 9 \smallbreak
+
+^\*^ Corresponding author \smallbreak
+
+E-mail: [marcthomas1\@hotmail.fr](mailto:marcthomas1@hotmail.fr){.email}
+\bigbreak \bigbreak
+
+**Key words** : R shiny web application, fabric, site formation
+processes, spatial analyses, orientation and inclination \bigbreak
+\bigbreak
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Abstract
+
+This article presents Fabryka, an open access R shiny web application
+dedicated to the fabric analysis of archaeological or geological
+assemblages. The fabric is a statistic made of the orientation and
+inclination of elongated sedimentary particles and archaeological
+objects. It provides information about the source of sediments, the
+nature of the geological processes involved in the formation of the
+deposits and their impact on the preservation of the archaeological
+assemblages. These statistical analyses are not easily accessible to
+non-specialists and are particularly time-consuming, sometimes requiring
+the use of several software, some of which are chargeable. Fabryka uses
+classical analytical procedures (Benn, rose and Schmidt diagrams and
+statistical tests on orientations) for analysing the fabrics of objects
+and includes a spatial method. New statistical methods and new ways of
+exploration are proposed in the application and this present article.
+Also, a call for contributions is proposed to construct a new reference
+model with spatial information. \smallbreak
+
+You can use Fabryka $\beta$ 3.0 by following this link
+<https://marchaeologist.shinyapps.io/fabryka/>. The version will be
+updated to Fabryka 1.0 after the review process of this article. The
+Fabryka application files, made in R [@rcoreteam2025] by using *shiny*
+package [@chang2024], and this article, written in rmarkdown
+[@allaire2014; @xie2018; @xie2020], are both available online in a
+public github repository
+(<https://github.com/marchaeologist/fabryka/tree/main>). When reviewing
+this article, you can either clone the repository, or push on the
+changes via github.\pagebreak
+
+# Introduction
+
+Fabric is made of the orientation and inclination of elongated
+sedimentary particles [@bertran1997; @bertran2002; @lenoble2004]. It
+is a statistic (*i.e.*, it needs as much measurements as possible) that
+enables the identification of sediment sources that make up the deposits
+[@texier2020], sedimentary processes involved in their formation
+[@bertran1997; @bertran2002; @lenoble2004] and their impact on
+archaeological assemblages *e.g.* [@isaac1967; @schick1986;
+@thomas2019]. Objects abandoned by prehistoric people can be considered
+as sedimentary particles and are affected by the same processes
+[@schiffer1983]. As geological particles are often not elongated
+enough, the fabric analysis made of the sedimentary deposits depends
+mainly on the archaeological material (bones and lithics), which enables
+them to be inserted into the formation dynamics of the site and to
+obtain information on their representativeness for the reconstruction of
+past activities.
+
+One of the first archaeological application probably dates to the
+experiments carried out by the South African G. Isaac (1967) on the
+shores of Lake Magadi in Kenya. G. Isaac wanted to explain the role
+played by hydrological processes on the bone accumulations found in the
+Great Rift Valley. In November 1964, he placed several concentrations of
+experimental material near a river branch. A few months later, heavy
+rains had reactivated the valley's rivers. In addition to the
+displacement or even loss of all or part of the material, G. Isaac
+revealed a reorientation that was mainly perpendicular and, to a lesser
+extent, parallel to the direction of flow, with a slight upstream
+inclination. Since G. Isaac's pioneering work, there has been an
+abundant literature devoted to the analysis of fabrics *e.g.*
+[@benn1994; @lenoble2004; @mcpherron2018] allowing this method to be
+increasingly performed on archaeological sites. Several software allow
+data processing, some of which are not freely accessible, do not allow
+spatial exploration of the data or do not offer interfaces to facilitate
+the task of non-programmer users *e.g* [@mcpherron2018].
+
+The following sections explain all the selected approaches and our
+proposals for processing the fabrics thanks to fabryka $\beta$ 3.0, from
+taking measurements in the field, through the statistical methods and
+graphical modes of representation used in the application (fig.
+\ref{fig:figure_presentation}). \bigbreak
+
+\begin{figure} [h]
+\centering
+  \includegraphics[width=16cm]{figure/presentation_applications.png}
+  \caption{Fabryka creation scheme and organisation of the article}
+\label{fig:figure_presentation}
+\end{figure}
+
+# Field data acquisition
+
+During excavation, the fabric of elongated remains is generally
+systematically measured. The direction (= bearing) of the lowest point
+is measured in the range [0; 360] with North as the reference (i.e.
+direction = 0°). The inclination (= plunge, dip) is measured in the
+range [0; 90] with horizontal as a reference. The direction [0; 360] can
+be converted into an orientation measured in the range [0; 180] by
+subtracting 180° from the measurements in the range ]180; 360].
+
+Traditionally, the direction of the objects lowest point is measured
+using a compass and the inclination is measured using an inclinometer.
+The aim is to measure the direction and inclination of the physical axis
+of elongation of objects ignoring its shape. To do this, the measuring
+device must be placed parallel to the general axis of elongation of the
+piece without touching it. Measuring the fabric from its imprint or
+visible surface is biased by its shape, making impossible to assess its
+true inclination. Since the theodolite was introduced to excavations in
+the 1990s, the fabrics is sometimes measured by recording the
+coordinates of the ends of objects. In the latter case, the rules of
+trigonometry are applied to calculate directions and inclinations.
+
+Recently, speleologist have created a digital inclinometer (Leica
+DistoX310 modified to DistoX2; <https://paperless.bheeb.ch/>). The
+device stores and associates data with the order of measurement. When
+the device is tilted downwards, the direction of the lowest point is
+measured and, the recorded inclination is negative. When the device is
+tilted upwards, the direction of the highest point is recorded, and the
+inclination is positive. To obtain data that is suitable for statistical
+analysis, in the first case the absolute value of the inclination must
+be retained. In the second case (*i.e.* positive inclination), if the
+measured direction is in the interval [0; 180], 180° must be added to
+the direction, and if the measured direction is in the interval ]180;
+360], 180° must be subtracted from the direction.
+
+When possible, preferring the use of a digital inclinometer avoids many
+errors during measurement and data recording. On the other hand, for the
+reasons given above, the use of a theodolite to measure fabrics is not
+recommended as it results in inaccurate inclination measurements. As
+well, measuring orientations and inclinations in sections leads to
+sampling biases.
+
+A sample corresponds to all the direction and inclination measurements
+taken within a Lithostratigraphic Unit (UL). UL seems to be the most
+coherent entity which needs to be explored because they are defined
+according to sedimentary criterion, which a priori guarantee a certain
+coherence in terms of the formation dynamics we are seeking to approach.
+In Fabryka, analyses are constrained within samples unless the user
+decides otherwise in the spatial exploration panel. \bigbreak
+
+# Mathematics
+
+## Classical method
+
+Two main statistical methods are used:
+
+1.  The first considers the orientation only. The calculation of the
+    orientation rate "r" (or "L" when expressed as a percentage, Curray
+    formula [@curray1956] tests the hypothesis of a unimodal
+    distribution of orientations. If the "p" value returned by the
+    Rayleigh test is less than a threshold of 0.05, the null hypothesis
+    of a random orientation from a uniform distribution is rejected. The
+    formula for calculating the orientation rate "r" where '$\alpha$' is
+    the orientation in radians and "n" is the sample size is as follows:
+
+Curray's formula to calculate 'L' is (**1.**)
+
+$$L = \frac{r*100}{n}$$ with (**2.**)
+
+$$r = \sqrt{\sum_{i=\alpha}^n sin{(2\alpha)} + \sum_{i=\alpha}^n cos{(2\alpha)}}$$
+\smallbreak where 'n' is the number of measures and '$\alpha$', is the
+orientation (0 to 180°) \smallbreak
+
+The Rayleigh test is performed thanks to the formula (**3.**)
+
+$$p = e^{(-(n*L^2))*10^-4}$$
+
+The method consisting of doubling the value of the orientations before
+calculating the orientation rate L and the Rayleigh test, as proposed by
+Krumbein [@krumbein1939], tests the hypothesis of a bimodal
+distribution of orientations with a period of 90°. The hypothesis of a
+90° period bimodal distribution of a sample of orientations is retained
+when p \< 0.05 [@curray1956]. The sensitivity of the Rayleigh test to
+the sample size 'n' prevents samples from being compared with each other
+when 'n' varies [@curray1956; @bertran2002]. For example, when the
+orientation rate "L" is 25%, the Rayleigh test gives p-values below a
+critical threshold of 0.05 for series with more than 50 measurements
+(fig. \ref{fig:rayleigh}).
+
+2.  The second considers the direction and inclination of the objects.
+    The normalised eigenvalues E1, E2 and E3 are calculated from the
+    cosine formed by the axis of the objects with the three axes of
+    space [@watson1966]. The Benn indices [@benn1994] describe the
+    fabric shape of a sample. The elongation index EL is equal to
+    1-(E2/E1) and the isotropy index IS is E3/E1. When EL is high, the
+    axes of the objects are grouped around a direction. When IS is high,
+    the fabric is said to be isotropic meaning the axes of the objects
+    show no order. Finally, when the value 1-EL-IS is high, the fabric
+    is said to be planar, with the axes of the objects grouped around a
+    plane. \bigskip
+
+```{r rayleigh, echo = FALSE, warning = FALSE, message = FALSE, fig.cap="Evolution of the p-value returned by the Rayleigh test as a function of the orientation rate 'L' and the sample size 'n'", fig.height = 3.5, fig.pos="f"}
+
+require(ggplot2)
+L = c(0:60)
+
+rayleigh <- function(L,n){
+  p = exp(-(n*L^2)*10^-4)
+  p_value <- p
+  p_value
+}
+
+p_value_sim_30 <- rep(x = NA, times = length (L))
+for (i in 1:61) {
+  p_value_sim_30[i]<- rayleigh(i,30)
+}
+
+p_value_sim_40 <- rep(x = NA, times = length (L))
+for (i in 1:61) {
+  p_value_sim_40[i]<- rayleigh(i,40)
+}
+
+p_value_sim_50 <- rep(x = NA, times = length (L))
+for (i in 1:61) {
+  p_value_sim_50[i]<- rayleigh(i,50)
+}
+
+p_value_sim_100 <- rep(x = NA, times = length (L))
+for (i in 1:61) {
+  p_value_sim_100[i]<- rayleigh(i,100)
+}
+
+seuil_0.05 = c(rep(0.05, length(L)))
+
+rayleigh_table <- data.frame(L, p_value_sim_30, p_value_sim_40, p_value_sim_50, p_value_sim_100,seuil_0.05)
+  
+ggplot(rayleigh_table, aes(x=L)) + 
+    geom_line(aes(y = p_value_sim_100, colour = "n = 100"), size = 1) +
+    geom_line(aes(y = p_value_sim_30, colour = "n =  30"), size= 1) +
+    geom_line(aes(y = p_value_sim_40, colour = "n =  40"), size= 1) + 
+    geom_line(aes(y = p_value_sim_50, colour = "n =  50"), size= 1) +
+    geom_line(aes(y = seuil_0.05, colour = "threshold 0.05"), size= 0.5) +
+    xlab("orientation rate 'L' (%)") +
+    ylab("p-value") + 
+    scale_color_manual(values=c("#0073C2", "#EFC000", "#868686", "#3B3B3B", "red")) +         scale_x_continuous(breaks = c(0, 10, 20, 30, 40, 50, 60)) +
+scale_y_continuous(breaks = c(0, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1)) +
+  theme_minimal() +
+  theme(legend.position = "bottom") + 
+  labs(colour = "")
+
+
+```
+
+## Spatialised method
+
+To distinguish different statistical populations, a spatial method
+proposed by McPherron (2018) is used. Thanks to this methods it is
+possible to calculate the Benn indices and to test the orientation rate
+'L' (formula (**3.**) modified R [@mcpherron2018] script) for each
+remains, and its n nearest neighbours in 3 dimensions (R McPherron 2018
+script, modified , formula (**4.**)). The analysis of the fabric as
+proposed by McPherron (2018) has the advantage of spatialising the
+measurements and thus avoiding the arbitrary sampling classically
+carried out by square or by décapage. It is possible to localize the
+statistical signal of fabrics by varying the number of measurements
+sampled to calculate the Benn indices. The choice of about 40 to 60
+measurements (each remain and its 40 to 60 nearest neighbours) to
+calculate the Benn indices allows local particularities to be observed,
+and above all, it allows the Rayleigh test to be carried out in its
+field of application (stability of the test between around 40 to 50
+measurements after [@bertran2002]).
+
+By avoiding the instability of the Rayleigh test, the rejection rate
+'Tr' of the null hypothesis provides a more reliable description of the
+distribution of orientations in a sample. In addition, it allows
+comparisons between samples despite varying sample size.
+
+The rejection ratio 'Tr' is performed thanks to the formula (**4.**)
+
+$$Tr = \frac{(n~times~p.value < 0.05)* 100}{n}$$
+
+# Graphical representation
+
+Several methods of representation are used. Rose diagrams summaries the
+orientation and inclination measurements for each sample. Benn indices
+are projected in a Benn diagram and measures (directions and plunge) are
+projected into Schmidt diagrams. These figures are available for both
+'classical' and 'spatialised' methods.
+
+As proposed by McPherron (2018), a spatial investigation of the fabric
+is proposed in a dedicated panel. Benn indices (1994) calculated for
+each spatial series of remains are projected within a Benn diagram in
+which each pole (isotropic, linear, and planar) is coloured respectively
+in red, green and blue. The RGB colour code is reused to materialize the
+fabric of the remains on spatial projections of the material along the
+axes of the excavation grid. Projections (xy, xz and yz axes) are
+performed. \bigbreak
+
+# Interface and user interactivity
+
+The next sections provide a description and a tutorial of Fabryka.
+
+## Upload your data
+
+First, upload your .csv file in the left sidebar panel (fig.
+\ref{fig:figure_upload_your_data}A). Pay attention to your decimal and
+column delimiters (fig. \ref{fig:figure_upload_your_data}B and C).
+
+Fabryka supports three angle measurement methods:
+
+-   angles taken with a compass and an inclinometer
+-   angles taken with a DistoX2
+-   angles taken with two shots at the total station.
+
+Five cases (i.e. forms of data) are covered by the application (fig.
+\ref{fig:figure_upload_your_data}D):
+
+-   check 'Case 1: Only angles' if you have in your dataset the columns
+    'id', 'sample', 'code', direction' and 'dip'.
+-   check 'Case 2: Only angles from DistoX2' if you have in your dataset
+    the same columns that above but your data comes from a DistoX2 and
+    needs to be converted.
+-   check 'Case 3: Angles from DistoX2 with coordinates' if you have in
+    your dataset the same columns that above (Case 2, data from DistoX2)
+    with a single set of coordinates (x, y, z).
+-   check 'Case 4: Angles and coordinates' if your data has the same
+    form that above (Case 3) but is coming from a compass and a
+    clinometer.
+-   check 'Case 5: Two shots data without angles' if you have the
+    columns 'id', 'sample', 'code' and the angles have been measured
+    with a total station (*i.e.* two shots data).
+
+\begin{figure} [H]
+\centering
+  \includegraphics[width=17cm]{figure/upload_your_data.jpg}
+  \caption{A. Browse your .csv file, B. choose your column separator, C. choose your decimal separator, D. check the right form of your dataset, E. to do so, have a look of example files, F. select the column needed in the application, G. a new dataset with new columns appears, your are ready to explore your data.}
+\label{fig:figure_upload_your_data}
+\end{figure}
+
+If you miss a context column, please create it by repeating a same
+character.
+
+According to your method of angle measurement and the presence of
+coordinates you must select the right case. Please refer to the example
+files in the left side bar panel (fig.
+\ref{fig:figure_upload_your_data}E). It contains a dataset coming from
+Le Moustier Lower shelter (Dordogne, France). The example files directly
+contain the good column names. You can use them directly in the
+application. Whatever the names of the columns in your file, you can
+select the appropriate columns in the column selector (fig.
+\ref{fig:figure_upload_your_data}F). Please keep only complete lines
+(*i.e.* no empty modalities, so no line without a fabric measurement).
+When a data table with new columns appears below the column selector,
+you are ready to use the application.
+
+If your data comes from a DistoX2, the columns 'direction' (= 'bearing',
+0 to 360° angles) and 'dip' (= 'plunge') are automatically corrected in
+the new table. Whatever the form of your dataset, two new columns
+'orientation_pi' (0 to 180° angles) and 'angle_double' (see Krumbein
+1939) appear. If the angles were measured using a total station (*i.e.*
+two shots data), the bearing and the plunge are also calculated. If only
+one set of coordinates is provided with angles, a second set of
+coordinates is calculated and displayed in the new table (fig.
+\ref{fig:figure_upload_your_data}G). You can download the new data by
+clicking the 'copy', the 'csv' or the 'pdf' buttons. \bigbreak
+
+## Classical method
+
+The classical method (fig. \ref{fig:figure_classical_method}) can be
+computed for all sources of data and absence/presence of coordinates
+(*i.e.* all cases described above).
+
+This panel includes:
+
+-   Benn diagrams with possible integration of Bertran and Lenoble
+    (2002) model (fig. \ref{fig:figure_classical_method}D)
+-   Rose diagrams for bearing and plunge (fig.
+    \ref{fig:figure_classical_method}G)
+-   Schmidt diagrams (fig. \ref{fig:figure_classical_method}H)
+-   Summary data table with Benn indices, additional statistics, and
+    orientation statistical tests.
+
+In this last table (fig. \ref{fig:figure_classical_method}I):
+
+-   'n' stands for number of measures in the samples
+-   'E1', 'E2' and 'E3' are the eigenvalues (see Woodcock 1977). They
+    correspond to the sum of the cosines formed by the axis of the
+    objects and the three axis of the space. They are used to compute
+    the Benn indices
+-   'IS', 'PL' and 'EL' are calculated thanks to the eigenvalues (Benn
+    1994). These are the Benn indices, ratios standing respectively for,
+    'isotropy' with IS = E3/E1, 'elongation' with EL = 1-(E2/E1) and
+    'planar' PL = 1-IS-EL
+-   'L' is the vector magnitude (strength of the preferred artefact
+    orientation) and 'R.p' is the p-value result of the Rayleigh test.
+-   'L.double' and 'R.p.double' are the same statistics that above for
+    double angles (Krumbein 1939).
+
+You can control the data you plot and the data appearing in the figures
+and the summary data table by changing the checkboxes filters (samples
+and code) and the slider (*i.e.* minimum number of measures) in the left
+sidebar panel (fig. \ref{fig:figure_classical_method}A, B and C).
+Certain geological processes can have a different impact on objects
+depending on their physical properties (*e.g.* silex versus bones in a
+water flow as in the example files provided where bones have a strong
+preferential orientation and are much more 'linear' in the Benn diagram,
+see [@thomas2019] and [@texier2020]). The natural processes models that
+you can add to the Benn diagram are calculated using data mainly from
+[@bertran1997; @bertran2002; @bertran2006; @lenoble2004]. In the rose
+diagram, orientations are considered (and not directions) as the
+Rayleigh test is perform on orientations (see Curray 1956) in the
+summary table. You can download all the figures by selecting a file
+format (.pdf, .jpeg and .png) and pressing the 'download' button (fig.
+\ref{fig:figure_classical_method}E and F).
+
+\begin{figure} [H]
+\centering
+  \includegraphics[width=17cm]{figure/classical_method.jpg}
+  \caption{A. filter by sample, B. if you want to filter by codes, uncheck 'no code distinction', C. manage the minimum sample size to perform analyses, D. buld your model thanks to Bertran and Lenoble (2002) data, E. and F. download figures by selecting a file format and pressing the 'download' button, G. rose diagrams subpanel, H. Schmidt diagram subpanel, I. summary table with additional statistics}
+\label{fig:figure_classical_method}
+\end{figure}
+
+## Spatialised method
+
+This panel includes (fig. \ref{fig:figure_spatialised_method}):
+
+-   Benn diagrams with Benn indices computed with nearest neighbours
+    points (McPherron 2018)
+-   Spatial projections of the points according to their fabric shape
+-   Summary data tables with orientation statistical tests, one at the
+    scale of each spatial series (each object and its n nearest
+    neighbours = one line) and one at the scale of the sample (fig.
+    \ref{fig:figure_spatialised_method}F and G).
+
+In these tables:
+
+-   'n' stands for number of measures in the samples
+-   'E1', 'E2' and 'E3' are the eigenvalues [@woodcock1977]. They
+    correspond to the sum of the cosines formed by the axis of the
+    objects and the three axes of the space. They are used to compute
+    the Benn indices.
+-   'IS', 'PL' and 'EL' are calculated thanks to the eigenvalues (Benn
+    1994). These are the Benn indices, ratios standing respectively for,
+    'isotropy' with IS = E3/E1, 'elongation' with EL = 1-(E2/E1) and
+    'planar' PL = 1-IS-EL
+-   'L' is the vector magnitude (strength of the preferred artefact
+    orientation) and 'R.p' is the p-value result of the Rayleigh test.
+-   'L.double' and 'R.p.double' are the same statistics that above for
+    double angles (see Krumbein 1939).
+
+At the spatial series scale (*i.e.* each points and n neighbours),
+statistics are provided in a table (Spatial series data table subpanel)
+with the Benn indices, the orientation rates L, L.double and p-values
+returned by the Rayleigh tests. At the sample scale, mean and standard
+deviations values of Benn indices, mean L and its corresponding Rayleigh
+tests means (mean values of all spatial series in the sample) and
+rejections ratios 'Tr' (formula **4.**) are given in the subpanel
+'Summary table of samples'.
+
+In the projections, the orientation of the objects can be materialized
+by sticks (by unchecking the corresponding box in the left sidebar
+panel, fig. \ref{fig:figure_spatialised_method}D) which colour is
+representative of the fabric of the series formed by the object and its
+n nearest neighbours. You can also add orthophoto in the background of
+projections (fig. \ref{fig:figure_spatialised_method}E). In the left
+sidebar panel, you can control the samples considered in the analyses by
+selecting the sample explored or by distinguishing the code used (*e.g.*
+flint versus bone, fig. \ref{fig:figure_spatialised_method}A and B). You
+can also use the slider to change the number of neighbors searched for
+around each point (fig. \ref{fig:figure_spatialised_method}C). Be
+careful, this will alter the results obtained in the Benn diagram and
+Rayleigh tests. \bigbreak
+
+## Spatial exploration
+
+This panel includes (fig. \ref{fig:figure_spatial_exploration}):
+
+-   A spatial exploration of your data starting from a Benn diagram
+-   A spatial exploration of your data starting from the spatial
+    projections (fig. \ref{fig:figure_spatial_exploration}J)
+-   Summary data tables with orientation statistical tests (fig.
+    \ref{fig:figure_spatial_exploration}I and K).
+
+\begin{figure} [H]
+\centering
+  \includegraphics[width=17cm]{figure/spatialised_method.jpg}
+  \caption{A. filter by sample, B. if you want to filter by code, uncheck 'no code distinction', C. choose the n nearest neighbors to perform the statistics, D. make sticks in spatial projections, E. upload a georeferenced orthophoto and check 'include' orthophoto to display it, F. new dataset at the spatial series scale, G. summary table at the sample scale.}
+\label{fig:figure_spatialised_method}
+\end{figure}
+
+In this panel, you can perform a spatialised analysis of your data
+starting from a Benn diagram or from projections. In both cases, you
+need to select the data you want to explore more locally in a new
+analysis. From the projections, you can select the points you want to
+explore directly. In the Benn diagram, you need to select the lasso
+selector (fig. \ref{fig:figure_spatial_exploration}D). Pay attention to
+the number of points selected and check that the new sample contains
+enough points to carry out the new analysis. If this is not the case,
+you can lower the slider in the left sidebar panel to perform the
+analysis with fewer neighbours (fig.
+\ref{fig:figure_spatial_exploration}E). You can download the new samples
+you have selected with spatial statistics from the corresponding
+subpanels (fig. \ref{fig:figure_spatial_exploration}I and K). \bigbreak
+
+## Tutorial
+
+The 'Tutorial' panel contains a summary of the mathematics, statistics
+and methods used in Fabryka and a short tutorial directly accessible
+from the application. \bigbreak
+
+\begin{figure} [H]
+\centering
+  \includegraphics[width=17cm]{figure/spatial_exploration.jpg}
+  \caption{A. if you want to filter by sample, uncheck 'No sample distinction' B. if you want to filter by code, uncheck 'no code distinction', C. choose the n nearest neighbors to perform the statistics (first Benn diagram), E. choose the n nearest neighbors to perform the statistics on the sampled data (second Benn diagram), F. make sticks in spatial projections, G. you can upload a georeferenced orthophoto and check 'include' orthophoto to display it, H. a new spatial exploration of the fabric is performed, I. new dataset at the selected spatial series scale, I. a similar spatial exploration is possible from the projections, K. new dataset at the selected spatial series scale.}
+\label{fig:figure_spatial_exploration}
+\end{figure}
+
+\pagebreak
+
+## New models
+
+The 'spatialised' method generates often more linear fabrics in
+comparison with the 'classical' method. This can be explained by the
+fact that objects that are close in space are more likely to resemble
+each other than objects that are further in space. \bigbreak
+
+Also, the structure of the point pattern is evocative of its fabric.
+Thus, the dispersion of the points depends on the shape of the fabric.
+Two extremes appear: the most isotropic samples are those with the most
+dispersed point patterns (*i.e.* the standard deviations are high) while
+the most linear samples are those with the least dispersed point
+patterns. Planar samples highlight point patterns with intermediate
+dispersion. The explanation of this phenomenon is intuitive: the more
+similar the fabrics of objects are, the closer they are in the Benn
+diagram and the more linear they are. To reflect this phenomenon, the
+standard deviations of the Benn indices are calculated and aim to
+describe the dispersion point patterns in the Benn diagrams.
+
+Global planar or isotropic fabrics can sometimes mask local anisotropy.
+Within certain samples, groups of objects form a dense cluster in the
+point pattern. This is expressed either by a locally more linear fabric,
+or by a planar fabric with a strong bimodal orientation.
+
+For the reasons given above, we wish to create new models that
+considered the particularities of the spatial method. A panel was
+therefore set up to collect new data describing the fabric of
+sedimentary processes in order to build a new "spatialised" reference
+model (*cf.* the "classical" model proposed by Bertran and Lenoble 2002).
+Some processes are already available. \bigbreak
+
+## Contributors
+
+The contributors panel aims at citing all contributors of this project
+which is open to everyone interested in the fabric analysis methods or
+to contribute in building a new spatial model by sending reference data.
+If any request or contribution, please contact the author of this
+article. \bigbreak
+
+# Acknowledgements
+
+The writing of the script was greatly facilitated by the work published
+by Shannon McPherron (2018). It includes some functions published by the
+author, with a few modifications. This work benefited from discussions
+with Jean-Pierre Texier, Arnaud Lenoble, Pascal Bertran and Dominique
+Todisco on issues related to site formation processes. It also benefited
+from the help of Rémi Lemoy and François and Victor Baleux on
+mathematical issues. A first version of the application was tested by
+Emmanuel Discamps and Aurélien Royer. I thanks them for their advice and
+support. \bigbreak
+
+# Util links
+
+-   use Fabryka $\beta$ 3.0: <https://marchaeologist.shinyapps.io/fabryka/> \smallbreak
+-   source codes: <https://github.com/marchaeologist/fabryka/tree/main> \smallbreak
+-   after the review process, create a doi (https://zenodo.org/login/?next=%2Faccount%2Fsettings%2Fgithub%2F) for each app' version. 
+    \pagebreak
+
+# Bibliography
+
+The 'Bibliography' panel in the application contains the bibliography
+cited in the application. This article contains the same bibliography
+with some additional references. \bigbreak
