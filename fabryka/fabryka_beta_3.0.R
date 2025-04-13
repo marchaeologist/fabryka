@@ -805,7 +805,7 @@ ui <- tagList(
   useShinyjs(),
   navbarPage(
     theme = shinytheme("yeti"),
-    p(strong("Fabryka"), "1.0"),
+    p(strong("Fabryka \\(\\beta\\) 3.0")),
     tabPanel(
       "Presentation",
       mainPanel(
@@ -818,7 +818,7 @@ ui <- tagList(
           align = "justify",
           h2("Presentation"),
           hr(),
-          p("Fabryka is a R shiny application dedicated to the fabric analysis of archaeological remains. This is the \\(\\beta\\)-test version 3.0. The application allows a deep exploration of the fabric data. An article, a tutorial video and the source code are available via the links respectively", strong("here,"), strong("here"), "and", a(href = "https://gist.github.com/4211337", strong("here")), "If you use fabryka, please cite the article."),
+          p("Fabryka is a R shiny application dedicated to the fabric analysis of archaeological remains. The app' is developped by Marc THOMAS", a(href = "https://traces.univ-tlse2.fr/accueil/equipes-et-ateliers/smp3c-societes-et-milieux-des-populations-de-chasseurs-cueilleurs-collecteurs/marc-thomas", strong("lab' web page.")), "This is the \\(\\beta\\)-test version 3.0. The application allows a deep exploration of the fabric data.", "An article and the source code are available via the links respectively", strong("here,"), "and", a(href = "https://github.com/marchaeologist/fabryka/tree/main", strong("here.")), "If you use fabryka, please cite the article."),
           tags$br(),
           p(strong("The 'Upload data'"), "panel allows the user to upload different data sources."),
           tags$br(),
@@ -846,7 +846,7 @@ ui <- tagList(
           tags$br(),
           p(strong("The 'Bibliography'"), "panel contains the bibliography cited in the application."),
           tags$br(),
-          p(strong("The 'Contributors'"), "contains acknowledgements from contributors to the creation of the application."),
+          p(strong("The 'Contributors'"), "contains acknowledgements and the list of contributors to the creation of the application."),
           tags$br(),
           p(strong("The 'Citation'"), "describes how to cite the application, the methods and datasets used."),
           tags$br(),
@@ -1792,8 +1792,7 @@ ui <- tagList(
                h2("Data contributions"),
                hr(),
                tags$ul(
-                 tags$li("The reference data used to build the models of the classical method were collected by", strong("P. Bertran"), "throughout his career (e.g. Bertran and Lenoble 2002). P. Bertran provided us with all these data in order to feed the application."),
-                 tags$li("Do not hesitate to send your own data to improve the classical method and spatialised method models.")
+                 tags$li("The reference data used to build the models of the classical method were collected by", strong("P. Bertran"), "throughout his career (e.g. Bertran and Lenoble 2002). P. Bertran provided us with all these data in order to feed the application.")
                )
         )
       )
@@ -1808,9 +1807,9 @@ ui <- tagList(
         ),
         column(12,
                align = "justify",
-               h2("How to cite Fabryka \\(\\beta\\) 2.0"),
+               h2("How to cite Fabryka \\(\\beta\\) 3.0"),
                tags$hr(),
-               p("If you use Fabryka please cite, the application [doi] and specify the version (e.g. 'Fabryka 1.0') and cite the dedicated article (Thomas 2024 [doi])."),
+               p("If you use Fabryka please cite, the application [doi], specify the version (e.g. 'Fabryka 1.0') and cite the dedicated article (Thomas 2025 [doi])."),
                tags$br(),
                p("Fabryka uses data collected by numerous researchers. Depending on the method (e.g. McPherron 2018) and data (e.g. Bertran and Lenoble 2002) you use please cite the dedicated articles."),
         )

@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
 ```
 
-This report is made thanks to Fabryka 1.0.
+This report is made thanks to Fabryka 3.0.
 
 
 # Tutorial
