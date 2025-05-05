@@ -279,9 +279,9 @@ scale_y_continuous(breaks = c(0, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80,
 To distinguish different statistical populations, a spatial method
 proposed by McPherron (2018) is used. Thanks to this method it is
 possible to calculate the Benn indices and to test the orientation rate
-'L' (formula (**3.**) modified R [@mcpherron2018] script) for each
+'L' (formula (**3.**) modified from @mcpherron2018 R script) for each
 remains, and its n nearest neighbours in 3 dimensions (McPherron
-[-@mcpherron2018] R script, modified , formula (**4.**)). The analysis
+[-@mcpherron2018] R script, modified, formula (**4.**)). The analysis
 of the fabric as proposed by McPherron [-@mcpherron2018] has the
 advantage of spatialising the measurements and thus avoiding the
 arbitrary sampling classically carried out by square and décapage. It
