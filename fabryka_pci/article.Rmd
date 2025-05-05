@@ -554,7 +554,7 @@ considered the particularities of the spatial method. A panel was
 therefore set up to collect new data describing the fabric of
 sedimentary processes in order to build a new "spatialised" reference
 model (*cf.* the "classical" model proposed by Bertran and Lenoble
-2002). Please, do not hesitate to send referential data to feed these new models ! \bigbreak
+2002). Please, do not hesitate to send referential data to feed these new models! \bigbreak
 
 ## Contributors
 
