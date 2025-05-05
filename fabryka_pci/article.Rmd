@@ -277,7 +277,7 @@ scale_y_continuous(breaks = c(0, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80,
 ## Spatialised method
 
 To distinguish different statistical populations, a spatial method
-proposed by McPherron (2018) is used. Thanks to this methods it is
+proposed by McPherron (2018) is used. Thanks to this method it is
 possible to calculate the Benn indices and to test the orientation rate
 'L' (formula (**3.**) modified R [@mcpherron2018] script) for each
 remains, and its n nearest neighbours in 3 dimensions (McPherron
@@ -291,7 +291,7 @@ of about 40 to 60 measurements (each remain and its 40 to 60 nearest
 neighbours) to calculate the Benn indices allows local particularities
 to be observed, and above all, it allows the Rayleigh test to be carried
 out in its field of application (stability of the test between around 40
-to 50 measurements after [-@bertran2002]).
+to 50 measurements after @bertran2002).
 
 By avoiding the instability of the Rayleigh test, the rejection rate
 'Tr' of the null hypothesis provides a more reliable description of the
