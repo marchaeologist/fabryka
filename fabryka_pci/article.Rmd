@@ -639,7 +639,7 @@ If you are using the application for the first time, Rstudio will install severa
 -   github reprository doi of fabryka:
     <https://doi.org/10.5281/zenodo.15207419> \smallbreak
 -   Zenodo repository of this article:
-    <https://doi.org/10.5281/zenodo.15236695> \bigbreak
+    <https://doi.org/10.5281/zenodo.15879462> \bigbreak
 
 # Acknowledgements
 
