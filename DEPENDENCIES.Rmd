@@ -1,0 +1,78 @@
+---
+title: "fabryka"
+Version: 1.1
+output: github_document
+---
+
+```{=html}
+<style>
+body {
+text-align: justify}
+</style>
+```
+
+# [<img src="https://raw.githubusercontent.com/marchaeologist/fabryka/main/inst/www/hex_Fabryka4.png" height="250" align="center"/>](https://github.com/marchaeologist/fabryka)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15236695.svg)](https://doi.org/10.5281/zenodo.15236695)
+
+# Package dependencies
+
+Find below a list of all packages used in fabryka.
+
+```{r library_fabryka}
+
+fabryka_packages=c("shiny", "dplyr","ggplot2","plotly", "ggsci", "ggtern", "circular", "CircStats", "Ternary", 
+                   "RStoolbox", "shinyjs", "rmarkdown", "shinythemes",  "ggalt", "DT", "raster")
+print(fabryka_packages)
+
+```
+
+Find in the code chunk below a way to install all the packages used in fabryka.
+
+```{r install_library, eval = FALSE, tidy=FALSE, width=120}
+
+fabryka_packages=c("shiny", "dplyr","ggplot2","plotly", "ggsci", "ggtern", "circular", "CircStats", "Ternary", 
+                   "RStoolbox", "shinyjs", "rmarkdown", "shinythemes",  "ggalt", "DT", "raster")
+is_installed=sapply(fabryka_packages,require,character.only=T)
+sapply(fabryka_packages[!is_installed],install.packages)
+
+```
+
+
+Find below a list of all packages dependencies used in fabryka.
+
+```{r dependencies}
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+dependencies <- tools::package_dependencies(fabryka_packages, db = available.packages())
+print(dependencies)
+```
+
+Please note that there are currently conflicts between the functions of several packages. You will find a list below. This problem will be addressed more carefully in future versions of the application. For now, all functions have been prefixed by their namespace.
+
+```{r conflicts}
+library(conflicted)
+conflicted::conflict_scout(fabryka_packages)
+```
+
+Below find the list of imported packaged by using the usethis::use_package() command.
+
+```{r imports, eval=FALSE}
+
+usethis::use_package("shiny")
+usethis::use_package("dplyr")
+usethis::use_package("ggplot2")
+usethis::use_package("plotly")
+usethis::use_package("ggsci")
+usethis::use_package("ggtern")
+usethis::use_package("circular")
+usethis::use_package("CircStats")
+usethis::use_package("Ternary")
+usethis::use_package("RStoolbox")
+usethis::use_package("shinyjs")
+usethis::use_package("rmarkdown")
+usethis::use_package("shinythemes")
+usethis::use_package("ggalt")
+usethis::use_package("DT")
+usethis::use_package("raster")
+
+```
