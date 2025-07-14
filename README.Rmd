@@ -22,11 +22,29 @@ You can also use fabryka in RStudio. To do so :
 
 * Install [R](https://www.r-project.org) and [Rstudio Desktop](https://posit.co/download/rstudio-desktop/).
 
-* clone the fabryka repository from GitHub: <https://github.com/marchaeologist/fabryka> or download the code in "Code" and "Download ZIP" at the same address. This will give you the latest version of the source code. The application can be launched by opening the app.R file in the main folder and by running the following commands: 
+* clone the fabryka repository from GitHub: <https://github.com/marchaeologist/fabryka> or download the code in "Code" and "Download ZIP" at the same address. This will give you the latest version of the source code.
 
-```{r, eval=FALSE}
+* Open fabryka.Rproj
+
+* If you are using the application for the first time, you have to install several packages used in the application. Lists of all these packages and dependencies are available in a DESCRIPTION file and a DEPENDECIES file in the github repository. To install fabryka packages and dependencies, copy and paste the following code lines into the R console:
+
+```{r packages_dep, eval=FALSE}
+
+fabryka_packages = c("shiny", "dplyr","ggplot2","plotly", "ggsci", "ggtern", "circular", "CircStats", "Ternary", 
+                   "RStoolbox", "shinyjs", "rmarkdown", "shinythemes",  "ggalt", "DT", "raster")
+
+is_installed = sapply(fabryka_packages, require, character.only=T)
+
+sapply(fabryka_packages[!is_installed], install.packages)
+
+```
+
+The application can be launched by opening the app.R file in the main folder and pressing "Run App" or by running the following commands:
+
+```{r run_app, eval=FALSE}
 
 pkgload::load_all(".")
+
 fabryka()
 
 ```
