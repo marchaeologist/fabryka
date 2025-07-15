@@ -614,7 +614,7 @@ The contributors panel aims at citing all contributors of this project. \bigbrea
 -   use fabryka online: <https://marchaeologist.shinyapps.io/fabryka/> \smallbreak
 -   source code: <https://github.com/marchaeologist/fabryka/tree/main> \smallbreak
 -   Report bugs or any request: <https://github.com/marchaeologist/fabryka/issues> \smallbreak
--   github reprository doi of fabryka: <https://doi.org/10.5281/zenodo.15207419> \smallbreak
+-   github reprository doi of fabryka: <https://doi.org/10.5281/zenodo.15881625> \smallbreak
 -   Zenodo repository of this article: <https://doi.org/10.5281/zenodo.15879462> \bigbreak
     
     

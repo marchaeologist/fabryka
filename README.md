@@ -3,7 +3,7 @@ fabryka
 
 # [<img src="https://raw.githubusercontent.com/marchaeologist/fabryka/main/inst/www/hex_Fabryka4.png" height="250" align="center"/>](https://github.com/marchaeologist/fabryka)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15236695.svg)](https://doi.org/10.5281/zenodo.15236695)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15880861.svg)](https://doi.org/10.5281/zenodo.15880861)
 
 ## README
 
@@ -13,7 +13,7 @@ assemblage. fabryka uses classical analytical procedures (Benn, rose,
 Schmidt and Woodcock diagrams and statistical tests on orientations) for
 analysing the fabrics of objects, an spatial method and new ways of
 spatial and statistical exploration. A descriptive article is available
-at <https://zenodo.org/records/15236695>.
+at <https://zenodo.org/records/15880861>.
 
 ## USE fabryka
 
@@ -77,7 +77,7 @@ versions of the application archived there.
 
 A tutorial is included in the application (*i.e.* ‘Tutorial” panel) and
 can also be found in a dedicated article:
-<https://zenodo.org/records/15236695>. ’fabryka’ includes an example
+<https://zenodo.org/records/15880861>. ’fabryka’ includes an example
 file you can download from the application (‘Upload data’ subpanel).
 
 ## NOTICE
@@ -90,4 +90,4 @@ This project is licensed under the
 
 THOMAS, M. (2025). Fabryka: A web application for easily analysing &
 exploring the fabric of archaeological assemblages. In PCI archaeology
-(Version 1). Zenodo. <https://doi.org/10.5281/zenodo.15236695>
+(Version 1). Zenodo. <https://doi.org/10.5281/zenodo.15880861>

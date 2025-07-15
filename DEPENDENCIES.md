@@ -3,7 +3,7 @@ fabryka
 
 # [<img src="https://raw.githubusercontent.com/marchaeologist/fabryka/main/inst/www/hex_Fabryka4.png" height="250" align="center"/>](https://github.com/marchaeologist/fabryka)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15236695.svg)](https://doi.org/10.5281/zenodo.15236695)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15880861.svg)](https://doi.org/10.5281/zenodo.15880861)
 
 # Package dependencies
 
