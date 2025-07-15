@@ -614,8 +614,8 @@ The contributors panel aims at citing all contributors of this project. \bigbrea
 -   use fabryka online: <https://marchaeologist.shinyapps.io/fabryka/> \smallbreak
 -   source code: <https://github.com/marchaeologist/fabryka/tree/main> \smallbreak
 -   Report bugs or any request: <https://github.com/marchaeologist/fabryka/issues> \smallbreak
--   github reprository doi of fabryka: <https://doi.org/10.5281/zenodo.15881625> \smallbreak
--   Zenodo repository of this article: <https://doi.org/10.5281/zenodo.15879462> \bigbreak
+-   github reprository doi of fabryka: <https://doi.org/10.5281/zenodo.15909666> \smallbreak
+-   Zenodo repository of this article: <https://doi.org/10.5281/zenodo.15880861> \bigbreak
     
     
 **If you are preparing a mission in a field without Internet access:**
