@@ -1,7 +1,8 @@
+# load all dependencies, functions, data and application server and ui
 pkgload::load_all(".")
 
-# You can launch the app by using :
+# launch the app by running :
 fabryka()
 
-#or:
+# or:
 shiny::runApp(fabryka())

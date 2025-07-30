@@ -1,8 +1,11 @@
 ---
 title: '**fabryka**'
-subtitle: A web application for easily analysing & exploring the fabric of archaeological assemblages
+subtitle: A web application for easily analysing & exploring the fabric of archaeological
+  assemblages
 output:
-  pdf_document: default
+  word_document: default
+  pdf_document:
+    keep_tex: true
 header-includes:
 - \usepackage{amsmath}
 - \usepackage{lineno}
@@ -62,14 +65,14 @@ geological assemblages. The fabric is a statistic made of the
 orientation and dip of elongated particles and archaeological objects.
 It provides information about the nature of the geological processes
 involved in the formation of the deposits and their impact on the
-preservation of the archaeological assemblages. These statistical
-analysis are not easily accessible to non-specialists and are
+preservation of the archaeological assemblages. This statistical
+analysis is not easily accessible to non-specialists and is
 particularly time-consuming, sometimes requiring the use of several
 software, some of which are chargeable. fabryka uses classical
 analytical procedures (Benn, rose, Schmidt and Woodcock diagrams and statistical
 tests on orientations) for analysing the fabrics of objects and includes
 a spatial method. New statistical methods and new ways of exploration
-are proposed in the application and this present article.\smallbreak
+are proposed in the application and in this present article.\smallbreak
 
 You can use fabryka by following this link
 <https://marchaeologist.shinyapps.io/fabryka/> or by launching the
@@ -89,12 +92,12 @@ identification of sedimentary processes involved in the formation of the
 deposits [@bertran1997; @bertran2002; @lenoble2004] and their impact on
 archaeological assemblages [@isaac1967; @schick1986; @thomas2019].
 Objects abandoned by prehistoric people can be considered as sedimentary
-particles and are affected by the same processes [@schiffer1983]. As
+particles and are affected by natural processes [@schiffer1983]. As
 geological particles are often not elongated enough, analysis of the
-fabric of sedimentary deposits depends mainly on archaeological material
+fabric of sedimentary deposits often depends mainly on archaeological material
 (bones and lithics). This makes it possible to identify the sedimentary
 processes to which they were subjected and to discuss their degree of
-spatial disorganization.
+spatial reorganization. When possible, distinguishing sedimentary particles from archaeological objects in the fabric analysis could allow to test whether these two populations were affected by different processes (*e.g.*, the fabric of an undisturbed occupation covered by deposits from a minor flood should reveal a distinct fabric from that of the alluvial pebbles on which it rests).
 
 One of the first archaeological application probably dates to the
 experiments carried out by the South African G. Isaac (1967) on the
@@ -118,14 +121,11 @@ field archives such as plans and photos [@de2013application;
 
 Two main families of statistical method are commonly used to
 characterize the fabric of a given assemblage [@bertran2002;
-@mcpherron2018; @de2021new]. 
-
-The first methods focus on the orientation
-of the measurements only and aim to test the null hypothesis of a random
-orientation from a uniform distribution through several statistical
-tests [@krumbein1939; @curray1956; @rao1967large].
-
-The second statistical method take into account object orientation and
+@mcpherron2018; @de2021new]. \newline
+The first methods focus on the orientation only and aim to test the null hypothesis of a random
+orientation of objects through several statistical
+tests [@krumbein1939; @curray1956; @rao1967large].\newline
+The second statistical method takes into account object orientation and
 dip. Three normalized eigenvalues (E1, E2 and E3) are calculated from
 the cosine formed by the axis of the artifact with the three axes of
 space [@watson1966]. @woodcock1977 and @benn1994 indices are used to
@@ -140,9 +140,7 @@ Mathematics section of this article.
 Several software allow data processing, some of which are not freely
 accessible, do not allow spatial exploration of the data or do not offer
 interfaces to facilitate the task of non-programmer users
-[@mcpherron2018].
-
-The following sections explain all the selected approaches and our
+[@mcpherron2018]. The following sections explain all the selected approaches and our
 proposals for processing the fabrics thanks to fabryka, from taking
 measurements in the field, through the statistical methods and graphical
 modes of representation used in the application (fig.
@@ -150,7 +148,7 @@ modes of representation used in the application (fig.
 
 \begin{figure} [h]
 \centering
-  \includegraphics[width=16cm]{figure/presentation_applications.png}
+  \includegraphics[width=15cm]{figure/presentation_applications.png}
   \caption{fabryka creation scheme and organisation of the article}
 \label{fig:figure_presentation}
 \end{figure}
@@ -160,17 +158,15 @@ modes of representation used in the application (fig.
 During excavation, the orientation and dip of elongated remains (*i.e.* a > 2 * b and with a > 2 cm) is
 measured on a representative set of artefacts or on the whole
 assemblage. The orientation (= bearing) of the lowest point is measured
-in the range [0; 360] with North as the reference (*i.e.* orientation =
+in the range [0; 360[ with North as the reference (*i.e.* orientation =
 0°). The dip (= plunge) is measured in the range [0; 90] with horizontal
-as a reference. The orientation [0; 360] can be converted into axial
-data measured in the range [0; 180] by subtracting 180° from the
-measurements in the range ]180; 360].
+as a reference. The orientation [0; 360[ can be converted into axial
+data measured in the range [0; 180[ by subtracting 180° from the
+measurements in the range [180; 360].
 
-Traditionally, the orientation of the objects lowest point is measured
-using a compass and the dip is measured using an inclinometer. The aim
-is to measure the orientation and dip of the physical axis of elongation
+Traditionally, the azimuth of the principal axis of an object is measured using a compass considering that the point with the lowest altitude indicates the orientation of the vector. The dip is measured using an inclinometer. The aim is to measure the orientation and dip of the elongaton axis of
 of objects ignoring its shape. To do this, the measuring device must be
-placed parallel to the general axis of elongation of the object.
+placed parallel to the elongation axis of the object.
 Measuring the fabric from its imprint or visible surface is biased by
 its shape, making impossible to assess its true dip. Since the
 theodolite was introduced to excavations in the 1990s, the fabrics is
@@ -201,7 +197,7 @@ measuring orientations and dip in sections leads to sampling biases.
 A sample corresponds to all the orientation and dip measurements taken
 within a Lithostratigraphic Unit (LU) or a pedostratigraphic unit. These
 units seem to be the most coherent entity which needs to be explored
-because they are defined according to geological criterion, which a
+because they are defined according to geological criteria, which a
 priori guarantee a certain coherence in terms of the formation dynamics
 we are seeking to approach. In fabryka, analysis are constrained within
 samples unless the user decides otherwise in the spatial exploration
@@ -215,10 +211,10 @@ Two main statistical family methods are used:
 
 1.  The first considers the orientation only. The calculation of the
     Vector Magnitude $L$ (expressed as a percentage) by Curray's
-    [-@curray1956] formula tests the hypothesis of a unimodal
+    [-@curray1956] formula tests the hypothesis of an unimodal
     distribution of orientations. If the $p$ value returned by the
-    Rayleigh test is less than a threshold of 0.05, the null hypothesis
-    of a random orientation from a uniform distribution is rejected. The
+    Rayleigh test is less than the threshold of 0.05, the null hypothesis
+    of a random sampling from a uniform distribution is rejected. The
     formula for calculating the Vector Magnitude $L$ is as follows:
 
 Curray's formula to calculate $L$ is:
@@ -478,7 +474,7 @@ of measures) in the left sidebar panel (fig.
 Certain geological processes can have a different impact on objects depending on their
 physical properties (*e.g.* silex versus bones in a water flow as in the
 example files provided where bones have a strong preferential
-orientation and are much more 'linear' in the Benn diagram [@thomas2019; @texier2020]. The natural processes models that you can add to the Benn diagram are calculated using data mainly from
+orientation and are much more 'linear' in the Benn diagram [@thomas2019; @texier2020]). The natural processes models that you can add to the Benn diagram are calculated using data mainly from
 [@bertran1997; @bertran2002; @bertran2006; @lenoble2004]. You will find
 the reference model data (with corresponding literature references)
 which is used in the application in the 'Model reference data' subpanel.
@@ -615,7 +611,7 @@ The contributors panel aims at citing all contributors of this project. \bigbrea
 -   source code: <https://github.com/marchaeologist/fabryka/tree/main> \smallbreak
 -   Report bugs or any request: <https://github.com/marchaeologist/fabryka/issues> \smallbreak
 -   github reprository doi of fabryka: <https://doi.org/10.5281/zenodo.15909666> \smallbreak
--   Zenodo repository of this article: <https://doi.org/10.5281/zenodo.15880861> \bigbreak
+-   Zenodo repository of this article: <https://doi.org/10.5281/zenodo.16601423> \bigbreak
     
     
 **If you are preparing a mission in a field without Internet access:**
@@ -625,7 +621,7 @@ Desktop](https://posit.co/download/rstudio-desktop/).
 
 2. Clone the fabryka repository from GitHub:
 <https://github.com/marchaeologist/fabryka> or download the code in
-"Code" and "Download ZIP" at the same address. This will give you the
+"Code" and "Download ZIP" at the same address. Unzip the folder. This will give you the
 latest version of the source code. 
 
 3. Open fabryka.Rproj
@@ -662,9 +658,9 @@ author, with a few modifications. This work benefited from discussions
 with Jean-Pierre Texier, Arnaud Lenoble, Pascal Bertran and Dominique
 Todisco on issues related to site formation processes. The reference
 data used to build the models of the classical method were collected by
-P. Bertran throughout his career. P. Bertran provided us with all these
+P. Bertran throughout his career. Pascal Bertran provided us with all these
 data in order to feed the application. The development of the
-application also benefited from the help of Rémi Lemoy and François and
+application also benefited from the help of Rémi Lemoy, François Baleux and
 Victor Baleux on mathematical issues. A first version of the application
 was tested by Emmanuel Discamps and Aurélien Royer. This project is
 supported by the "Service Valorisarion de la Recherche" of the
@@ -672,7 +668,7 @@ University Toulouse Jean Jaurès. Finally, the constructive comments of
 Pascal Bertran, recommender of this article, and, of Frédéric
 Santos, Nicolas Frerebeau and Alfonso Benito-Calvo, reviewers of this
 article, considerably improved the manuscript and the web application. I
-would like to thank all these reaseachers for their advice. \bigbreak
+would like to thank all these reasearchers for their advice. \bigbreak
 
 # Conflict of interest disclosure
 
